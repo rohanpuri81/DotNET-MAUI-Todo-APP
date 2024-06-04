@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.NewPage1"
+             Title="NewPage1">
+    <VerticalStackLayout>
+        <Label 
+            Text="Return to main page"
+            VerticalOptions="Center" 
+            HorizontalOptions="CenterAndExpand" >
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ReturnHome" ></TapGestureRecognizer>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label 
+            Text="Enter todo to add"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            
+            />
+        <Label 
+            x:Name="ErrorLabel"
+            Text="Errors will be shown here"
+            VerticalOptions="Center"
+            HorizontalOptions="CenterAndExpand" />
+        <Entry
+            x:Name="AddTodo" 
+            HorizontalOptions="Fill"
+           
+            />
+        <Button 
+            x:Name="Sub"
+            HorizontalOptions='FillAndExpand'
+            Text="Submit"
+            SemanticProperties.Hint="This button will be use for Add and edit"
+            Clicked="OnSubmit"
+            />
+        <Label
+            x:Name="UserLabel"
+            Text="Entered text is"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            />
+
+        <ListView x:Name="ListViewXAML">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="AliceBlue" >
+                            <Label Text="{Binding .}" TextColor="Brown"></Label>
+                            <Button Text="Edit" HorizontalOptions="Start"  CommandParameter="{Binding .}" Clicked="OnEditClicked"/>
+                            <Button Text="Delete" HorizontalOptions="Start"  CommandParameter="{Binding .}" Clicked="OnDeleteClicked"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
+
